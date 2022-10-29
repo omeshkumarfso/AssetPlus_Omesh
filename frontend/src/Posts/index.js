@@ -1,6 +1,7 @@
 import { Button, Card, CardActionArea, CardActions, CardContent, CardHeader, Typography } from '@mui/material'
 import axios from 'axios'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 /**
@@ -8,6 +9,7 @@ import React from 'react'
  * Also Material UI is integrated for design.
  */
 function TestingAPI() {
+    const navigate= useNavigate()
 
     const [testData, setTestData] = React.useState(undefined);
 
@@ -26,6 +28,19 @@ function TestingAPI() {
                     }}>
                     Click to Test
                 </Button>
+                <Button
+                    variant="contained"
+                    onClick={async () => navigate('/showPost')}>
+                    Go to shop
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={async () => navigate('/createPost')}>
+                    Create Post
+                </Button>
+               
+                  
+                
             </CardActions>
 
             <CardActionArea>

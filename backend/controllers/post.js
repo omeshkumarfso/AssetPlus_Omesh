@@ -1,24 +1,6 @@
-const PostModel = require("../../models/Post");
-const formidable = require('formidable')
-var router = require("express").Router();
-var fs = require('fs')
-const savePost = require("../../controllers/post");
-// @AssetPlus: This is a sample get request
-router.get("/", async (req, res) => {
-    var posts = await PostModel.find();
-    return res.send(posts);
-});
-
-router.delete("/delete", async (req, res) => {
-    
-    await PostModel.findByIdAndRemove(req.body._id);
-    var posts = await PostModel.find();
-    return res.send(posts);
-});
-
-// @AssetPlus: Add other routes here
-// router.post("/add")
-router.post("/add", async  (req,res)=>{
+const formidable = require('formidable');
+const PostModel = require("../models/Post")
+exports.savePost = (req,res)=>{
     let form = new formidable.IncomingForm();
     form.keepExtentions = true;
     form.parse(req, (err, fields, file) => {
@@ -55,5 +37,4 @@ router.post("/add", async  (req,res)=>{
         })
 
     })
-});
-module.exports = router;
+}

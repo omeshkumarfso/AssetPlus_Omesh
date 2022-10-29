@@ -1,8 +1,19 @@
 var mongoose = require("mongoose");
 
-var postSchema = mongoose.Schema(
+var postSchema = new mongoose.Schema(
     {
         // @AssetPlus: Describe schema here
+        photo:{
+            data:Buffer,
+            contentType:String
+        },
+        title:{
+            type:String
+        },
+        description: {
+            type: String,
+            trim: true
+        },
 
     },
     {
@@ -10,4 +21,4 @@ var postSchema = mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("Post", postSchema)
+module.exports = mongoose.model("PostModel", postSchema)
